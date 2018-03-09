@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "star-wars-font";
+  src: url("Starjhol.ttf") format('truetype');
+  font-weight:  bold;
+  font-style: normal;
+}
+
+h1.f1{
+  font-family: "star-wars-font";
+  color: yellow;
+  font-size: 5em;
+}
