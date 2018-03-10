@@ -7,17 +7,11 @@ const Person =({key, name, website, films}) => {
         <h2>{name}</h2>
         <p><a href={`${website}`}>{website}</a></p>
         {
-          films.map((film, i) => {
-            fetch(films[i])
-            .then(response => response.json())
-            .then(movie => {
-              console.log(movie.title)
-              return (
-                <p>{movie.title}</p>
-              )
-            })
-
-          })
+          async function getMovie(){
+            const movies = await fetch(films)
+            const data = await movies.json();
+            console.log(data);
+          }
         }
       </div>
     </div>
