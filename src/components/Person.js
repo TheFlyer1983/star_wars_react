@@ -1,17 +1,22 @@
 import React from 'react';
+import Films from './Films';
 
-const Person =({key, name, website, films}) => {
+const Person =({name, website, films}) => {
   return(
     <div className='tc bg-light-blue dib v-top br3 pa3 ma2 bw2 shadow-5 cardHeight'>
       <div>
         <h2>{name}</h2>
         <p><a href={`${website}`}>{website}</a></p>
+        <h2>Films</h2>
         {
-          async function getMovie(){
-            const movies = await fetch(films)
-            const data = await movies.json();
-            console.log(data);
-          }
+          films.map((film, i) => {
+            return(
+              <Films
+                key={i}
+                film={films[i]}
+              />
+            )
+          })
         }
       </div>
     </div>

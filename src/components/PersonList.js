@@ -6,7 +6,6 @@ const PersonList = ({people}) => {
     <div>
       {
         people.map((person, i) => {
-          console.log(people[i].films)
           return (
               <Person
                 key={i}
