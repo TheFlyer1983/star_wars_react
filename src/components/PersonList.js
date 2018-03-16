@@ -2,7 +2,6 @@ import React from 'react';
 import Person from './Person';
 
 const PersonList = ({people}) => {
-  console.log(people)
   return(
     <div>
       {
@@ -15,6 +14,7 @@ const PersonList = ({people}) => {
                 weight={people[i].mass}
                 website={people[i].url}
                 films={people[i].films}
+                gender={people[i].gender}
               />
           );
         })

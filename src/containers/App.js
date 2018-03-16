@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PersonList from '../components/PersonList';
+import SearchBox from '../components/SearchBox';
 import './App.css';
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      people: []
+      people: [],
+      searchfield: ''
     }
   }
   componentDidMount(){
@@ -14,14 +16,25 @@ class App extends Component {
     .then(results => results.json())
     .then(people => this.setState({people: people.results}));
   }
+  onSearchChange = (event) => {
+    this.setState({searchfield: event.target.value})
+  }
   render() {
-    const {people} = this.state;
-    return (
+    const {people, searchfield} = this.state;
+    const filteredPeople = people.filter(person => {
+      return(
+        person.name.toLowerCase().includes(searchfield.toLowerCase())
+      )
+    })
+    return !people.length ?
+      <h1>Loading</h1> :
+      (
       <div className='tc'>
         <h1 className='f1'>star<br/>wars</h1>
-        <PersonList people={people}/>
+        <SearchBox searchChange={this.onSearchChange}/>
+        <PersonList people={filteredPeople}/>
       </div>
-    );
+      );
   }
 }
 
